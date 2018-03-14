@@ -1,6 +1,6 @@
 import React from "react";
-import SongList from "../components/MusicList.js"
-import SongItem from "../components/MusicItem.js"
+import MusicList from "../components/MusicList.js"
+// import MusicItem from "../components/MusicItem.js"
 
 class Top20Box extends React.Component {
 
@@ -25,10 +25,10 @@ class Top20Box extends React.Component {
       if (request.status !== 200) return
       const jsonString = request.responseText;
       const musicObjects = JSON.parse(jsonString);
-      // console.log("musicObjects", musicObjects);
+      // console.log("musicObjects.feed.entry", musicObjects.feed.entry);
       this.setState({allMusic: musicObjects.feed.entry})
     });
-    // console.log("allMusic", this.state.allMusic[0]);
+    // console.log("allMusic", this.state.allMusic);
     request.send()
   }
 
@@ -36,15 +36,15 @@ class Top20Box extends React.Component {
     // const musicArtist = this.state.allMusic.map(music => music)
     // const countryNames = this.state.countries.map(country => country.name)
     // console.log("musicArtist", musicArtist);
-    console.log("allMusic.feed", this.state.allMusic);
+    // console.log("allMusic", this.state.allMusic);
     return(
       <div>
         <h1>iTunes Top 20</h1>
         <MusicList music={this.state.allMusic} />
-      <div/>
+      </div>
     )
   }
 
 }
 
-  export default Top20Box
+export default Top20Box
