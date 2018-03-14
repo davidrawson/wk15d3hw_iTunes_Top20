@@ -7,7 +7,10 @@ const MusicItem = (props) => {
 
 
   return (
-    <p>{props.position}. "{props.title}" by {props.artist}</p>
+    <div>
+      <p>{props.position}. "{props.title}" by {props.artist}</p>
+      <img src={props.imageSRC}></img>
+    </div>
   )
 }
 

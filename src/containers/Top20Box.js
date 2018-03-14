@@ -21,22 +21,15 @@ class Top20Box extends React.Component {
     request.open("GET", url);
 
     request.addEventListener("load", () => {
-      // console.log(request.status);
       if (request.status !== 200) return
       const jsonString = request.responseText;
       const musicObjects = JSON.parse(jsonString);
-      // console.log("musicObjects.feed.entry", musicObjects.feed.entry);
       this.setState({allMusic: musicObjects.feed.entry})
     });
-    // console.log("allMusic", this.state.allMusic);
     request.send()
   }
 
   render(){
-    // const musicArtist = this.state.allMusic.map(music => music)
-    // const countryNames = this.state.countries.map(country => country.name)
-    // console.log("musicArtist", musicArtist);
-    // console.log("allMusic", this.state.allMusic);
     return(
       <div>
         <h1>iTunes Top 20</h1>
