@@ -1,7 +1,6 @@
 import React from "react";
 import MusicList from "../components/MusicList.js"
 import MusicSelect from "../components/MusicSelect.js"
-// import MusicItem from "../components/MusicItem.js"
 
 class Top20Box extends React.Component {
 
@@ -21,14 +20,14 @@ class Top20Box extends React.Component {
   componentDidMount(){
     const url = "https://itunes.apple.com/gb/rss/topsongs/limit=20/json"
     const request = new XMLHttpRequest();
-    console.log(this.selectedChartURL);
+    console.log("selected url",this.state.selectedChartURL);
 
-    if (this.selectedChartURL != null){
+    if (this.state.selectedChartURL != null){
       request.open("GET",this.selectedChartURL);
-    //   console.log("album selected");
+      console.log("album selected");
     } else {
-    request.open("GET", url);
-  }
+      request.open("GET", url);
+    }
 
     request.addEventListener("load", () => {
       if (request.status !== 200) return
@@ -40,14 +39,17 @@ class Top20Box extends React.Component {
   }
 
   handleChartSelected(url){
+    console.log("url", url);
     this.setState({selectedChartURL: url})
+    console.log("handle", this.state.selectedChartURL);
+    this.componentDidMount();
   }
 
   render(){
     return(
       <div>
         <h1>iTunes Top 20</h1>
-        <MusicSelect onChange={this.handleChartSelected}/>
+        <MusicSelect onChartSelected={this.handleChartSelected}/>
         <MusicList music={this.state.allMusic} />
       </div>
     )

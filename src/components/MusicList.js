@@ -10,8 +10,12 @@ class MusicList extends Component {
     // I quite like the nodes nomenclature
     const musicNodes = this.props.music.map( (musicItem, index) => {
       return(
-        <MusicItem artist={musicItem['im:artist'].label} position={index+1}
-          title={musicItem['im:name'].label} key={index} imageSRC={musicItem['im:image'][0].label}>
+        <MusicItem
+          artist={musicItem['im:artist'].label}
+          position={index+1}
+          title={musicItem['im:name'].label}
+          key={index}
+          imageSRC={musicItem['im:image'][0].label}>
         </MusicItem>
       )
     })
